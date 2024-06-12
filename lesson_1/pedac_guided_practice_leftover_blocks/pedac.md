@@ -1,8 +1,8 @@
 # PEDAC Guided Practice: Leftover Blocks
 
-### Step 1: Understand the Problem
+## Step 1: Understand the Problem
 
-#### Leftover Blocks
+### Leftover Blocks
 
 *You have a number of building blocks that can be used to build a valid structure. There are certain rules about what determines a valid structure:*
 
@@ -15,7 +15,7 @@
 
 *Write a program that, given the number of available blocks, calculates the number of blocks left over after building the tallest possible valid structure.*
 
-#### Tasks
+### Tasks
 
 *You are provided with the problem description above. Your task for this step are:*
 
@@ -25,7 +25,7 @@
 
 - *Write a list of clarifying questions for anything that isn’t clear.*
 
-#### Problem
+### Problem
 
 **Input**: Integer representing the number of building blocks available
 
@@ -51,7 +51,7 @@
 
 - Can the lower layer have more blocks than necessary?
 
-### Step 2: Example and Test Cases
+## Step 2: Example and Test Cases
 
 *You are provided with the following test cases for this problem:*
 
@@ -67,15 +67,15 @@ print(calculate_leftover_blocks(14) == 0) # True
 
 *Regarding your initial mental model and questions from Step 1, make some notes about the test cases. Do the test cases confirm or refute different elements of your original analysis and mental mode? Do they answer any of the questions you had, or do the perhaps raise further questions?*
 
-#### Notes
+### Notes
 
 The test cases confirm that the structures form a shape that resembles a pyramid. The base gets larger as more layers are added to the structure. It seems like the program should take out the unnecessary blocks and count it as a left over block.
 
-### Step 3: Data Structures
+# Step 3: Data Structures
 
 *For this step, use your analysis so far to make notes regarding whether you might need to use any particular data structures as part of your solution. If so, make notes on which ones.*
 
-#### List
+### List
 
 A nested list can be used to represent each layer visually such that:
 
@@ -87,7 +87,7 @@ A nested list can be used to represent each layer visually such that:
 ]
 ```
 
-#### Integer
+### Integer
 
 Integers are also an option because the number of blocks in a layer is the square of the layer number. This means total number of blocks can be calculated easily:
 
