@@ -51,5 +51,23 @@
 
 - Can the lower layer have more blocks than necessary?
 
+### Step 2: Example and Test Cases
 
+*You are provided with the following test cases for this problem:*
+
+```python
+print(calculate_leftover_blocks(0) == 0)  # True
+print(calculate_leftover_blocks(1) == 0)  # True
+print(calculate_leftover_blocks(2) == 1)  # True
+print(calculate_leftover_blocks(4) == 3)  # True
+print(calculate_leftover_blocks(5) == 0)  # True
+print(calculate_leftover_blocks(6) == 1)  # True
+print(calculate_leftover_blocks(14) == 0) # True
+```
+
+*Regarding your initial mental model and questions from Step 1, make some notes about the test cases. Do the test cases confirm or refute different elements of your original analysis and mental mode? Do they answer any of the questions you had, or do the perhaps raise further questions?*
+
+#### Notes
+
+The test cases confirm that the structures form a shape that resembles a pyramid. The base gets larger as more layers are added to the structure. It seems like the program should take out the unnecessary blocks and count it as a left over block.
 
