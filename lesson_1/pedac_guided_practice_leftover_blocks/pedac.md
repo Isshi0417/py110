@@ -71,3 +71,38 @@ print(calculate_leftover_blocks(14) == 0) # True
 
 The test cases confirm that the structures form a shape that resembles a pyramid. The base gets larger as more layers are added to the structure. It seems like the program should take out the unnecessary blocks and count it as a left over block.
 
+### Step 3: Data Structures
+
+*For this step, use your analysis so far to make notes regarding whether you might need to use any particular data structures as part of your solution. If so, make notes on which ones.*
+
+#### List
+
+A nested list can be used to represent each layer visually such that:
+
+```python
+[
+    [1],
+    [1, 1, 1, 1],
+    ...
+]
+```
+
+#### Integer
+
+Integers are also an option because the number of blocks in a layer is the square of the layer number. This means total number of blocks can be calculated easily:
+
+```python
+# Layer 1
+blocks = 1**2	# 1
+
+# Layer 2
+blocks = 2**2	# 4
+
+# Layer 3
+blocks = 3**2	# 9
+
+# ...
+```
+
+
+
