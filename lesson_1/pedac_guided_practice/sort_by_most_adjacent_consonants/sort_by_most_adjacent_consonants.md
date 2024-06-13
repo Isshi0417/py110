@@ -38,3 +38,35 @@
 - What does “space between consonants in adjacent words” mean?
 - Is it case sensitive?
 - Should it be sorted in descending or ascending order?
+
+## Step 2: Examples and Test Cases
+
+*You are provided with the following test cases for this problem:*
+
+```python
+my_list = ['aa', 'baa', 'ccaa', 'dddaa']
+print(sort_by_consonant_count(my_list))
+# ['dddaa', 'ccaa', 'aa', 'baa']
+
+my_list = ['can can', 'toucan', 'batman', 'salt pan']
+print(sort_by_consonant_count(my_list))
+# ['salt pan', 'can can', 'batman', 'toucan']
+
+my_list = ['bar', 'car', 'far', 'jar']
+print(sort_by_consonant_count(my_list))
+# ['bar', 'car', 'far', 'jar']
+
+my_list = ['day', 'week', 'month', 'year']
+print(sort_by_consonant_count(my_list))
+# ['month', 'day', 'week', 'year']
+
+my_list = ['xxxa', 'xxxx', 'xxxb']
+print(sort_by_consonant_count(my_list))
+# ['xxxx', 'xxxb', 'xxxa']
+```
+
+*Regarding your initial mental model and questions from Step 1, make some notes about the test cases. Do the test cases confirm or refute different elements of your original analysis and mental mode? Do they answer any of the questions you had, or do they perhaps raise further questions?*
+
+### Clarifications
+
+It clarifies the “space between consonants” a little more. In the second test case, the program considers ‘n’ and ‘c’ in ‘can can’ to be adjacent to one another. It can also be assumed that the strings can have more than one words or one word, but not an empty string. Since the input are all lowercase, it can be assumed that the program does not need to be case sensitive. The list should be sorted in descending order.
