@@ -104,5 +104,24 @@ blocks = 3**2	# 9
 # ...
 ```
 
+## Step 4: Algorithm
+
+For this step, use your analysis of the problem so far to write out a high-level algorithm that solves the problem at an abstract level. Avoid too much implementation detail at this stage.
+
+### Step-by-Step Solution
+
+1. Start with:
+   - Number of remaining blocks is the input
+   - The starting layer is 0 (0 blocks used)
+2. Subtract the number of blocks necessary to built current layer from the number of blocks remaining.
+3. Keep track of the layer number by adding 1 after building each layer.
+4. Use the current layer number to calculate the number of blocks required to build the layer (square value of itself).
+5. Check if the number of blocks remaining is greater than or equal to the number of blocks required to build the current layer.
+   - If there are enough blocks:
+     - Subtract the number of blocks required in the current layer from the number of remaining blocks.
+     - Repeat steps 2-5.
+   - If not enough:
+     - Return the number of the remaining blocks.
+
 
 
