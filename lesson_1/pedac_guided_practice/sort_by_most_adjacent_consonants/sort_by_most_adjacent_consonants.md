@@ -100,3 +100,9 @@ Both the inputs and outputs are lists, meaning the data structure will most like
    - Reset the adjacent consonants string
 5. Return the maximum consonants count
 
+## Step 5: Implement a Solution in Code
+
+*Based on all of your notes and analysis so far, implement a working solution in Python. Your solution should pass all of the test cases provided.*
+
+
+
