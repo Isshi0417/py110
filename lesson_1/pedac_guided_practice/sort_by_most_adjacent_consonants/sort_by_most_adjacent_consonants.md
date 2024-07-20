@@ -70,3 +70,13 @@ print(sort_by_consonant_count(my_list))
 ### Clarifications
 
 It clarifies the “space between consonants” a little more. In the second test case, the program considers ‘n’ and ‘c’ in ‘can can’ to be adjacent to one another. It can also be assumed that the strings can have more than one words or one word, but not an empty string. Since the input are all lowercase, it can be assumed that the program does not need to be case sensitive. The list should be sorted in descending order.
+
+## Step 3: Data Structures
+
+*For this step, with reference to your analysis from the two preceding steps, make some notes regarding whether you need to use any particular data structures in your solution. If so, which ones?*
+
+### Notes
+
+Both the inputs and outputs are lists, meaning the data structure will most likely be a list.
+
+## 
