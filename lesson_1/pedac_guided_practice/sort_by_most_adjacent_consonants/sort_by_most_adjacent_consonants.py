@@ -1,4 +1,8 @@
+'''A simple program that sorts the given list of strings into a descending order based
+   on the number of adjacent consonants.'''
+
 def count_max_adjacent_consonants(string):
+    '''Counts largest count of adjacent consonants'''
     string = ''.join(string.split(' '))
     max_consonants_count = 0
     adjacent_consonants = ''
@@ -18,6 +22,7 @@ def count_max_adjacent_consonants(string):
     return max_consonants_count
 
 def sort_by_consonant_count(strings):
+    '''Sorts list in descending order'''
     strings.sort(key = count_max_adjacent_consonants, reverse = True)
     return strings
 
