@@ -79,4 +79,24 @@ It clarifies the “space between consonants” a little more. In the second tes
 
 Both the inputs and outputs are lists, meaning the data structure will most likely be a list.
 
-## 
+## Step 4: Algorithm
+
+*For this step, use your analysis of the problem so far to write out a high-level algorithm that solves the problem at an abstract level. Avoid too much implementation detail at this stage.*
+
+### High-level Algorithm
+
+1. Determine the highest number of adjacent consonants within a string for each string in the list.
+2. Sort the list based on the calculated highest number of consonants.
+3. Return the sorted list.
+
+### Algorithm
+
+1. Remove spaces from the string
+2. Initialize maximum consonants variable
+3. Initialize adjacent consonants string variable
+4. Iterate through each letter in the list
+   - Add it to adjacent consonants string if letter is a consonant
+   - Set the maximum consonant count to length of the adjacent consonants string if the letter is a vowel, greater in length than the current maximum consonants count, and adjacent consonants string has a length greater than 1.
+   - Reset the adjacent consonants string
+5. Return the maximum consonants count
+
