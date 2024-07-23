@@ -71,3 +71,10 @@ for name in ages:
 print(total)
 ```
 
+## Practice Problem 6
+Determine the minimum age from the above `ages` dictionary.
+
+```python
+print(min(ages.values()))
+```
+
