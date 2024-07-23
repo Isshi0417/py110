@@ -51,3 +51,23 @@ print(name_positions)
 ```
 
 The code should print a dictionary that follows the format `{"Name": "Position"}` for each element in the list.
+
+## Practice Problem 5
+*Calculate the total age given the following dictionary:*
+
+```python
+ages = {
+	"Herman": 32,
+	"Lily": 30,
+	"Grandpa": 5843,
+	"Eddie": 10,
+	"Marilyn": 22,
+	"Spot": 237,
+}
+total = 0
+for name in ages:
+	total += ages[name]
+
+print(total)
+```
+
