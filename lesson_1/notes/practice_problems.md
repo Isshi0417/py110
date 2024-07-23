@@ -38,3 +38,16 @@ b = {3, 4, 5, 6}
 ```python
 print(a.union(b))
 ```
+
+## Practice Problem 4
+*Given the following code, what would the output be? Try to answer without running the code.*
+
+```python
+names = ["Fred", "Barney", "Wilma", "Betty", "Pebbles", "Bambam"]
+name_positions = {}
+for index, name in enumerate(names):
+	name_positions[name] = index
+print(name_positions)
+```
+
+The code should print a dictionary that follows the format `{"Name": "Position"}` for each element in the list.
