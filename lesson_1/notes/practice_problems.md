@@ -14,7 +14,7 @@ print(fruits.count("banana"))
 ```
 
 ## Practice Problem 2
-Consider the set:
+*Consider the set:*
 
 ```python
 numbers = {1, 2, 3, 4, 5, 5, 4, 3}
@@ -24,3 +24,17 @@ print(len(numbers))
 *What is the set's length? Try to answer without running code.*
 
 The set's length should be `5`. Since sets can't contain duplicate values, it will automatically ignore any repeating values. This means it only counts each number once.
+
+## Practice Problem 3
+*Given two sets:*
+
+```python
+a = {1, 2, 3, 4}
+b = {3, 4, 5, 6}
+```
+
+*How would you obtain a set that contains all the unique values from both sets?*
+
+```python
+print(a.union(b))
+```
