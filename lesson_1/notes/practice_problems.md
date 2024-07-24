@@ -92,3 +92,21 @@ print(selected_words)
 ```
 
 The code should output `['bear']` because the `if` statement filters out any elements that are 3 letters or less.
+
+## Practice Problem 8
+*Given the following string, create a dictionary that represents the frequency with each letter occurs. The frequency count should be case-sensitive:*
+
+```python
+statement = "The Flintstones Rock"
+broken_down = {}
+
+for char in statement:
+	if char == ' ':
+		continue
+	elif char not in broken_down:
+		broken_down[char] = 1
+	else:
+		broken_down[char] += 1
+print(broken_down)
+```
+
