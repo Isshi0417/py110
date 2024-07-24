@@ -128,3 +128,13 @@ print(dictionary.popitem())
 ```
 
 It should output `{'b': 'bear'}` since `popitem()` removes the last entry from the dictionary and returns it, which means the dictionary will only have `{'a': 'ant'}`, but the popped item is `{'b': 'bear'}`.
+
+## Practice Problem 11
+*What does the following code return? Try to answer without running the code.*
+
+```python
+lst = [1, 2, 3, 4, 5]
+lst[:2]
+```
+
+It should return `[1, 2]`. When using indexes, the numbers within the index represent `[start:end:step]`, where `step` is optional. In this case, the returned value starts at the beginning of the list and ends when the index value is `2`. It's important to note that like `range()`, the ending value is not inclusive.
