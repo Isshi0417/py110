@@ -110,3 +110,11 @@ for char in statement:
 print(broken_down)
 ```
 
+## Practice Problem 9
+*What is the return value of the list comprehension below? Try to answer without running the code.*
+
+```python
+[num for num in [1, 2, 3] if num > 1]
+```
+
+This should return `[2, 3]`.  It filters any numbers greater than `1` and returns the list.
