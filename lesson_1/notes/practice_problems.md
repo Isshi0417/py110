@@ -138,3 +138,14 @@ lst[:2]
 ```
 
 It should return `[1, 2]`. When using indexes, the numbers within the index represent `[start:end:step]`, where `step` is optional. In this case, the returned value starts at the beginning of the list and ends when the index value is `2`. It's important to note that like `range()`, the ending value is not inclusive.
+
+## Practice Problem 12
+*What would be the output of the code below: Try to answer without running the code.*
+
+```python
+frozen = frozenset([1, 2, 3, 4, 5])
+frozen.add(6)
+print(frozen)
+```
+
+The code will output an error because frozen sets are immutable in Python. This means `add()` is not a valid built-in function to manage frozen sets.
