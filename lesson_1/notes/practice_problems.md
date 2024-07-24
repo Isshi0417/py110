@@ -72,9 +72,23 @@ print(total)
 ```
 
 ## Practice Problem 6
-Determine the minimum age from the above `ages` dictionary.
+*Determine the minimum age from the above `ages` dictionary.*
 
 ```python
 print(min(ages.values()))
 ```
 
+## Practice Problem 7
+*What would the following code output? Try to answer without running the code.*
+
+```python
+words = ['ant', 'bear', 'cat']
+selected_words = []
+for word in words:
+	if len(word) > 3:
+		selected_words.append(word)
+
+print(selected_words)
+```
+
+The code should output `['bear']` because the `if` statement filters out any elements that are 3 letters or less.
