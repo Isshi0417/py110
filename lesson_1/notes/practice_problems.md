@@ -118,3 +118,13 @@ print(broken_down)
 ```
 
 This should return `[2, 3]`.  It filters any numbers greater than `1` and returns the list.
+
+## Practice Problem 10
+*What does the following code print and why?*
+
+```python
+dictionary = {'a': 'ant', 'b': 'bear'}
+print(dictionary.popitem())
+```
+
+It should output `{'b': 'bear'}` since `popitem()` removes the last entry from the dictionary and returns it, which means the dictionary will only have `{'a': 'ant'}`, but the popped item is `{'b': 'bear'}`.
