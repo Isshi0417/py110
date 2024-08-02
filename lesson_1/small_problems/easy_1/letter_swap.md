@@ -49,9 +49,7 @@ def swap(string):
 		if len(word) == 1:
 			result.append(word)
 		else:
-			first = word[0]
-			last = word[-1]
-			word = last + word[1:-1] + first
+			word = word[-1] + word[1:-1] + word[0]
 			result.append(word)
 
 	return " ".join(result)
