@@ -43,7 +43,7 @@ The data handled should be strings and dictionaries.
 **Output**: Dictionary
 
 ## Algorithm
-1. Split the string into a list by the surrounded symbol
+1. Split the string into a list by spaces
 2. Initialize an empty dictionary
 3. For each word in the list
 	- Check if the length (key) already exists
