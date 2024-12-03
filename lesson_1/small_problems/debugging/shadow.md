@@ -11,7 +11,7 @@ print(sum(numbers, 2) == 20)
 ```
 
 ## Answer
-The built-in function `sum()` is shadowed by the currently declared function. This means that the function is being called recursively when finding ht esum. The name of the function can be changed to fix this issue.
+The built-in function `sum()` is shadowed by the currently declared function. This means that the function is being called recursively when finding the sum. The name of the function can be changed to fix this issue.
 
 ```python
 def sum_factors(numbers, factor):
