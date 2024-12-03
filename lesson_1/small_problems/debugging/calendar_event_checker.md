@@ -1,0 +1,31 @@
+# Calendar Event Checker
+## Problem
+We have a list of events and what to  check whether a specific date is available (i.e., no events planned for that date). However, the function always returns the wrong value.
+
+```python
+events = {
+    "2023-08-13": ["Python debugging exercises"],
+    "2023-08-14": ["Read 'Automate the Boring Stuff'"],
+    "2023-08-15": ["Webinar: Python for Data Science"],
+}
+
+def is_date_available(date):
+    if date in events[key]:
+        return True
+
+    return False
+
+print(is_date_available("2023-08-14"))  # should return False
+print(is_date_available("2023-08-16"))  # should return True
+```
+
+## Answer
+The issue is that the code returns True when the date is in events.
+
+```python
+def is_date_available(date):
+    if date not in events:
+        return True
+
+    return False
+```
