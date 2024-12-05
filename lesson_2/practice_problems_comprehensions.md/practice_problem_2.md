@@ -8,6 +8,6 @@ lst = [['b', 'c', 'a'], [2, 11, -3], ['blue', 'black', 'green']]
 
 ## Solution
 ```python
-sorted_list = [sorted(sorted_items, key=str) for sorted_items in lst]
+sorted_list = [sorted(sorted_items) for sorted_items in lst]
 print(sorted_list)
 ```
