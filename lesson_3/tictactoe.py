@@ -4,6 +4,7 @@ import os
 INITIAL_MARKER = ' '
 HUMAN_MARKER = 'X'
 COMPUTER_MARKER = 'O'
+WINNING_SCORE = 5
 
 def prompt(message):
     print(f"=> {message}")
@@ -77,6 +78,8 @@ def detect_winner(board):
     return None
 
 def play_tic_tac_toe():
+    player_score = 0
+    computer_score = 0
     while True:
         board = initialize_board()
 
@@ -85,16 +88,24 @@ def play_tic_tac_toe():
 
             player_chooses_square(board)
             if someone_won(board) or board_full(board):
+                player_score += 1
                 break
 
             computer_chooses_square(board)
             if someone_won(board) or board_full(board):
+                computer_score += 1
                 break
 
         display_board(board)
 
         if someone_won(board):
             prompt(f"{detect_winner(board)} won!")
+            if player_score > 2:
+                prompt("Player is the overall winner!")
+                exit()
+            elif computer_score > 2:
+                prompt("Computer is the overall winner!")
+                exit()
         else:
             prompt("It's a tie!")
 
