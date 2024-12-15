@@ -23,3 +23,18 @@ def find_at_risk_square(line, board):
                 return square
     return None
 ```
+
+## Improve Game Loop
+```python
+def alternate_player(current_player):
+    if current_player == "player":
+        current_player = "computer"
+    else:
+        current_player = "player"
+
+def choose_square(board, current_player):
+    if current player == "player":
+        player_chooses_square(board)
+    else:
+        computer_chooses_square(board)
+```

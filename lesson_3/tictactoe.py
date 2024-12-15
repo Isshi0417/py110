@@ -107,9 +107,22 @@ def find_at_risk_square(line,board, marker):
                 return square
     return None
 
+def alternate_player(current_player):
+    if current_player == "player":
+        current_player = "computer"
+    else:
+        current_player = "player"
+
+def choose_square(board, current_player):
+    if current_player == "player":
+        player_chooses_square(board)
+    else:
+        computer_chooses_square(board)
+
 def play_tic_tac_toe():
     player_score = 0
     computer_score = 0
+    current_player = "player"
     while True:
         board = initialize_board()
 
