@@ -53,19 +53,23 @@ def player_chooses_square(board):
 def computer_chooses_square(board):
     square = None
 
-    for line in WINNING_LINES:
-        square = find_at_risk_square(line, board, HUMAN_MARKER)
-        if square:
-            break
-        
     if not square:
         for line in WINNING_LINES:
             square = find_at_risk_square(line, board, COMPUTER_MARKER)
             if square:
                 break
+                
+    for line in WINNING_LINES:
+        square = find_at_risk_square(line, board, HUMAN_MARKER)
+        if square:
+            break
 
     if not square:
-        square = random.choice(empty_squares(board))
+        if board[5] == INITIAL_MARKER:
+            board[5] = COMPUTER_MARKER
+        else:
+            square = random.choice(empty_squares(board))
+
     board[square] = COMPUTER_MARKER
 
 def board_full(board):
@@ -94,10 +98,10 @@ def detect_winner(board):
 
     return None
 
-def find_at_risk_square(line,board):
+def find_at_risk_square(line,board, marker):
     markers_in_line = [board[square] for square in line]
 
-    if markers_in_line.count(HUMAN_MARKER) == 2:
+    if markers_in_line.count(marker) == 2:
         for square in line:
             if board[square] == INITIAL_MARKER:
                 return square
@@ -138,10 +142,14 @@ def play_tic_tac_toe():
         prompt("Play again? (y or n)")
         answer = input().lower()
 
-        if answer[0] != 'y':
-            break
-
-    prompt('Thanks for playing Tic Tac Toe!')
+        while answer[0] != 'y' or answer[0] != 'n':
+            prompt("Play again? (y or n) Please enter y or n.")
+            answer = input().lower()
+            if answer[0] == 'y':
+                break
+            if answer[0] == 'n':
+                prompt("Thanks for playing Tic Tac Toe!")
+                exit()
 
 def join_or(lst, separator = ", ", conjunction = "or"):
     if lst == []:
