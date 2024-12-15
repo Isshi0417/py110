@@ -1,21 +1,25 @@
 import random
 import time
+import sys
 
 deck = [['S', 'A'], ['S', '2'], ['S', '3'], ['S', '4'], ['S', '5'], ['S', '6'],
-        ['S', '7'], ['S', '8'], ['S', '9'], ['S', '10'], ['S', 'J'], ['S', 'Q'],
-        ['S', 'K'],
+        ['S', '7'], ['S', '8'], ['S', '9'], ['S', '10'], ['S', 'J'], ['S', 'Q']
+        ,['S', 'K'],
         ['H', 'A'], ['H', '2'], ['H', '3'], ['H', '4'], ['H', '5'], ['H', '6'],
-        ['H', '7'], ['H', '8'], ['H', '9'], ['H', '10'], ['H', 'J'], ['H', 'Q'],
-        ['H', 'K'],
+        ['H', '7'], ['H', '8'], ['H', '9'], ['H', '10'], ['H', 'J'], ['H', 'Q']
+        ,['H', 'K'],
         ['C', 'A'], ['C', '2'], ['C', '3'], ['C', '4'], ['C', '5'], ['C', '6'],
-        ['C', '7'], ['C', '8'], ['C', '9'], ['C', '10'], ['C', 'J'], ['C', 'Q'],
-        ['C', 'K'],
+        ['C', '7'], ['C', '8'], ['C', '9'], ['C', '10'], ['C', 'J'], ['C', 'Q']
+        ,['C', 'K'],
         ['D', 'A'], ['D', '2'], ['D', '3'], ['D', '4'], ['D', '5'], ['D', '6'],
-        ['D', '7'], ['D', '8'], ['D', '9'], ['D', '10'], ['D', 'J'], ['D', 'Q'],
-        ['D', 'K']]
+        ['D', '7'], ['D', '8'], ['D', '9'], ['D', '10'], ['D', 'J'], ['D', 'Q']
+        ,['D', 'K']]
 player = []
 dealer = []
 
+"""
+Plays the game.
+"""
 def play_game():
     # Shuffle the deck
     shuffle(deck)
@@ -30,73 +34,80 @@ def play_game():
     # Play and compare score
     who_wins(player_turn(player), dealer_turn(dealer))
 
-# Decide winner
+"""
+Compares the scores and decides the winner.
+"""
 def who_wins(player_score, dealer_score):
     if player_score > dealer_score:
         prompt("You win!")
     else:
         prompt("Dealer wins!")
 
-# Dealer turn
-def dealer_turn(dealer):
+"""
+Dealer's turn gameplay.
+"""
+def dealer_turn(dealer_hand):
     # Announce card
     prompt("Dealer reveals his hand:")
-    print(dealer)
+    print(dealer_hand)
 
-    dealer_score = total(dealer)
+    dealer_score = total(dealer_hand)
 
     # Hit if the difference between 21 and current number is greater than 5
     while (21 - dealer_score) > 5:
         time.sleep(3)
         prompt("Dealer hits!")
-        dealer.append(deck.pop(0))
+        dealer_hand.append(deck.pop(0))
         prompt("Dealer's hand:")
-        print(dealer)
-        dealer_score = total(dealer)
+        print(dealer_hand)
+        dealer_score = total(dealer_hand)
         if busted(dealer_score):
             prompt("Dealer busted you win!")
-            exit()
+            sys.exit()
         else:
             prompt("Dealer stays!")
             break
-    
+
     return dealer_score
 
 
-# Player turn
-def player_turn(player):
-    player_score = total(player)
+"""
+Player's turn gameplay.
+"""
+def player_turn(player_hand):
+    player_score = total(player_hand)
     while True:
         answer = input("=> Hit or Stay?")
         if answer == 'stay':
             break
-        player.append(deck.pop(0))
-        print(f"Your hand: {player}.")
-        
+        player_hand.append(deck.pop(0))
+        print(f"Your hand: {player_hand}.")
+
         # Calculate the total
-        player_score = total(player)
+        player_score = total(player_hand)
         print(f"=> You are at {player_score}.")
 
         if busted(player_score):
             break
-    
+
     if busted(player_score):
         prompt("You busted!")
         prompt("Game over!")
-        exit()
+        sys.exit()
     else:
         prompt("You chose to stay!")
 
     return player_score
 
-# Check if the score is busted
+"""
+Check if the score is a bust.
+"""
 def busted(score):
-    if score > 21:
-        return True
-    else:
-        return False
+    return (score > 1)
 
-# Calculate the total
+"""
+Calculate total score.
+"""
 def total(cards):
     values = [card[1] for card in cards]
 
@@ -116,17 +127,23 @@ def total(cards):
 
     return card_sum
 
-# Deal the cards in alternating order
-def deal(deck):
-    for i in range(2):
-        player.append(deck.pop(0))
-        dealer.append(deck.pop(0))
+"""
+Deal the cards in alternating order.
+"""
+def deal(deck_cards):
+    for _ in range(2):
+        player.append(deck_cards.pop(0))
+        dealer.append(deck_cards.pop(0))
 
-# Shuffle the deck
-def shuffle(deck):
-    random.shuffle(deck)
+"""
+Shuffle the deck.
+"""
+def shuffle(deck_cards):
+    random.shuffle(deck_cards)
 
-# Prompt
+"""
+Format system message.
+"""
 def prompt(message):
     print(f"=> {message}")
 
