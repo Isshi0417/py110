@@ -5,6 +5,11 @@ INITIAL_MARKER = ' '
 HUMAN_MARKER = 'X'
 COMPUTER_MARKER = 'O'
 WINNING_SCORE = 5
+WINNING_LINES = [
+    [1, 2, 3], [4, 5, 6], [7, 8, 9],
+    [1, 4, 7], [2, 5, 8], [3, 6, 9],
+    [1, 5, 9], [3, 5, 7]
+]
 
 def prompt(message):
     print(f"=> {message}")
@@ -48,7 +53,14 @@ def player_chooses_square(board):
 def computer_chooses_square(board):
     if len(empty_squares(board)) == 0:
         return
-    square = random.choice(empty_squares(board))
+    square = None
+    for line in WINNING_LINES:
+        square = find_at_risk_square(line, board)
+        if square:
+            break
+    
+    if not square:
+        square = random.choice(empty_squares(board))
     board[square] = COMPUTER_MARKER
 
 def board_full(board):
@@ -75,6 +87,15 @@ def detect_winner(board):
                   and board[sq3] == COMPUTER_MARKER):
             return 'Computer'
 
+    return None
+
+def find_at_risk_square(line,board):
+    markers_in_line = [board[square] for square in line]
+
+    if markers_in_line.count('X') == 2:
+        for square in line:
+            if board[square] == ' ':
+                return square
     return None
 
 def play_tic_tac_toe():
