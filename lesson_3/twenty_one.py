@@ -61,6 +61,7 @@ def dealer_turn(dealer_hand):
         prompt("Dealer's hand:")
         print(dealer_hand)
         dealer_score = total(dealer_hand)
+        time.sleep(3)
         if busted(dealer_score):
             prompt("Dealer busted you win!")
             sys.exit()
@@ -103,7 +104,7 @@ def player_turn(player_hand):
 Check if the score is a bust.
 """
 def busted(score):
-    return (score > 1)
+    return (score > 21)
 
 """
 Calculate total score.
