@@ -57,13 +57,13 @@ def computer_chooses_square(board):
         square = find_at_risk_square(line, board, HUMAN_MARKER)
         if square:
             break
-
+        
     if not square:
         for line in WINNING_LINES:
             square = find_at_risk_square(line, board, COMPUTER_MARKER)
             if square:
                 break
-    
+
     if not square:
         square = random.choice(empty_squares(board))
     board[square] = COMPUTER_MARKER
