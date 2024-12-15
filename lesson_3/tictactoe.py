@@ -51,13 +51,18 @@ def player_chooses_square(board):
     board[int(square)] = HUMAN_MARKER
 
 def computer_chooses_square(board):
-    if len(empty_squares(board)) == 0:
-        return
     square = None
+
     for line in WINNING_LINES:
-        square = find_at_risk_square(line, board)
+        square = find_at_risk_square(line, board, HUMAN_MARKER)
         if square:
             break
+
+    if not square:
+        for line in WINNING_LINES:
+            square = find_at_risk_square(line, board, COMPUTER_MARKER)
+            if square:
+                break
     
     if not square:
         square = random.choice(empty_squares(board))
