@@ -2,8 +2,8 @@ import random
 import time
 import sys
 
-global player_round_score
-global dealer_round_score
+WINNING_THRESHOLD = 21
+DEALER_THRESHOLD = 17
 
 """
 Plays the game.
@@ -30,9 +30,6 @@ def play_game():
     player = []
     dealer = []
 
-    player_round_score = 0
-    dealer_round_score = 0
-
     # Deal cards
     deal(deck, player, dealer)
 
@@ -41,13 +38,17 @@ def play_game():
     print(f"Dealer: {dealer[0]} and an unknown card.")
 
     # Play and compare score
-    who_wins(player_turn(deck, player, dealer_round_score), dealer_turn(deck, dealer))
+    who_wins(player_turn(deck, player), dealer_turn(deck, dealer))
 
 """
 Ask if player wants to play again.
 """
 def play_again():
     answer = input("=> Would you like to play again? (Y/N)\n").lower()
+    while answer not in ["y", "n"]:
+        answer = input("=> Please enter 'y' or 'n'.")
+        if answer in ["y", "n"]:
+            break
     if answer[0] == "y":
         play_game()
     else:
@@ -60,14 +61,13 @@ Compares the scores and decides the winner.
 def who_wins(player_score, dealer_score):
     if player_score == dealer_score:
         prompt("It's a tie!")
+        play_again()
     elif player_score > dealer_score:
         prompt("You win the round!")
-        player_round_score += 1
-        print(player_round_score)
+        play_again()
     else:
         prompt("Dealer wins the round!")
-        dealer_round_score += 1
-        print(dealer_round_score)
+        play_again()
 
 """
 Dealer's turn gameplay.
@@ -82,7 +82,7 @@ def dealer_turn(card_deck, dealer_hand):
     time.sleep(3)
 
     # Hit if the difference between 21 and current number is greater than 5
-    while (21 - dealer_score) > 5:
+    while dealer_score < DEALER_THRESHOLD:
         prompt("Dealer hits!")
         dealer_hand.append(card_deck.pop(0))
         prompt("Dealer's hand:")
@@ -92,8 +92,6 @@ def dealer_turn(card_deck, dealer_hand):
         time.sleep(3)
         if busted(dealer_score):
             prompt("Dealer busted! You win the round!")
-            player_round_score += 1
-            print(player_round_score)
             play_again()
     
     prompt("Dealer chose to stay.")
@@ -104,11 +102,15 @@ def dealer_turn(card_deck, dealer_hand):
 """
 Player's turn gameplay.
 """
-def player_turn(card_deck, player_hand, dealer_round_point):
+def player_turn(card_deck, player_hand):
     player_score = total(player_hand)
     while True:
-        answer = input("=> Hit or Stay?\n")
-        if answer == 'stay':
+        answer = input("=> (H)it or (S)tay?\n").lower()
+        while answer not in ["h", "s"]:
+            answer = input("Please enter 'h' or 's'.")
+            if answer in ["h", "s"]:
+                break
+        if answer[0] == "s":
             break
         player_hand.append(card_deck.pop(0))
         print(f"Your hand: {player_hand}.")
@@ -122,8 +124,6 @@ def player_turn(card_deck, player_hand, dealer_round_point):
 
     if busted(player_score):
         prompt("You busted! Game over!")
-        dealer_round_score += 1
-        print(dealer_round_score)
         play_again()
     else:
         prompt("You chose to stay!")
@@ -134,7 +134,7 @@ def player_turn(card_deck, player_hand, dealer_round_point):
 Check if the score is a bust.
 """
 def busted(score):
-    return (score > 21)
+    return (score > WINNING_THRESHOLD)
 
 """
 Calculate total score.
@@ -152,7 +152,7 @@ def total(cards):
             card_sum += int(value)
 
     aces = values.count("A")
-    while card_sum > 21 and aces:
+    while card_sum > WINNING_THRESHOLD and aces:
         card_sum -= 10
         aces -= 1
 
