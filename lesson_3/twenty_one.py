@@ -2,6 +2,9 @@ import random
 import time
 import sys
 
+global player_round_score
+global dealer_round_score
+
 """
 Plays the game.
 """
@@ -27,6 +30,9 @@ def play_game():
     player = []
     dealer = []
 
+    player_round_score = 0
+    dealer_round_score = 0
+
     # Deal cards
     deal(deck, player, dealer)
 
@@ -35,7 +41,7 @@ def play_game():
     print(f"Dealer: {dealer[0]} and an unknown card.")
 
     # Play and compare score
-    who_wins(player_turn(deck, player), dealer_turn(deck, dealer))
+    who_wins(player_turn(deck, player, dealer_round_score), dealer_turn(deck, dealer))
 
 """
 Ask if player wants to play again.
@@ -55,9 +61,13 @@ def who_wins(player_score, dealer_score):
     if player_score == dealer_score:
         prompt("It's a tie!")
     elif player_score > dealer_score:
-        prompt("You win!")
+        prompt("You win the round!")
+        player_round_score += 1
+        print(player_round_score)
     else:
-        prompt("Dealer wins!")
+        prompt("Dealer wins the round!")
+        dealer_round_score += 1
+        print(dealer_round_score)
 
 """
 Dealer's turn gameplay.
@@ -81,7 +91,9 @@ def dealer_turn(card_deck, dealer_hand):
         print(f"=> Dealer is at {dealer_score}.")
         time.sleep(3)
         if busted(dealer_score):
-            prompt("Dealer busted you win!")
+            prompt("Dealer busted! You win the round!")
+            player_round_score += 1
+            print(player_round_score)
             play_again()
     
     prompt("Dealer chose to stay.")
@@ -92,7 +104,7 @@ def dealer_turn(card_deck, dealer_hand):
 """
 Player's turn gameplay.
 """
-def player_turn(card_deck, player_hand):
+def player_turn(card_deck, player_hand, dealer_round_point):
     player_score = total(player_hand)
     while True:
         answer = input("=> Hit or Stay?\n")
@@ -109,8 +121,9 @@ def player_turn(card_deck, player_hand):
             break
 
     if busted(player_score):
-        prompt("You busted!")
-        prompt("Game over!")
+        prompt("You busted! Game over!")
+        dealer_round_score += 1
+        print(dealer_round_score)
         play_again()
     else:
         prompt("You chose to stay!")
